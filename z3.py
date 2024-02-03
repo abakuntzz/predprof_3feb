@@ -5,19 +5,28 @@ datanew=[]
 for i in data:
     s=i.split('$')
     datanew.append(s)
+datanew=sorted(datanew,key=lambda x: x[1])
 while True:
     charname=input('Введите имя персонажа: ')
     if charname=='game':
         break
     c=0
-    games=[]
-    print('Персонаж встречается в играх:')
-    for i in datanew:
+    left=0
+    right=len(datanew)-1
+    while abs(left-right)>1:
+        mid=(left+right)//2
+        if datanew[mid][1]<charname:
+            left=mid
+        elif datanew[mid][1]>charname:
+            right=mid
+        else:
+            break
+    for i in range(mid-4,mid+5):
+        if datanew[i][1]==charname:
+            print(datanew[i][0])
+            c+=1
         if c==5:
             break
-        if i[1]==charname and i[0] not in games:
-            print(i[0])
-            games.append(i[0])
-            c+=1
+
     if c==0:
         print('Этого персонажа не существует')
