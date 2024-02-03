@@ -1,9 +1,10 @@
 import csv
 file=open('game.txt')
 data=file.read().split('\n')
-data.pop(0)
+header=data.pop(0).split('$')
 gamenew=open('game_new.csv','w')
 writer=csv.writer(gamenew)
+writer.writerow(header)
 for i in data:
     s=i.split('$')
     if '55' in s[2]:
