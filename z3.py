@@ -21,7 +21,7 @@ while True:
             right=mid
         else:
             break
-    for i in range(mid-4,mid+5):
+    for i in range(max(0,mid-4),min(len(datanew),mid+5)):
         if datanew[i][1]==charname:
             print(datanew[i][0])
             c+=1
