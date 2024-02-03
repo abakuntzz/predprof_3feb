@@ -1,4 +1,15 @@
+import csv
 file=open('game.txt')
-data=file.readline().split('\n')
-print(data[:3])
+data=file.read().split('\n')
+data.pop(0)
+gamenew=open('game_new.csv','w')
+writer=csv.writer(gamenew)
+for i in data:
+    s=i.split('$')
+    if '55' in s[2]:
+        print(f'У персонажа\t{s[1]}\tв игре\t{s[0]}\tнашлась ошибка с кодом:\t {s[2]}.\tДата фиксации:\t {s[3]}')
+        s[2]='Done'
+        s[3]='0000-00-00'
+    writer.writerow(s)
+
   
