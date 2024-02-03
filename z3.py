@@ -13,6 +13,7 @@ while True:
     c=0
     left=0
     right=len(datanew)-1
+    games=[]
     while abs(left-right)>1:
         mid=(left+right)//2
         if datanew[mid][1]<charname:
@@ -23,10 +24,15 @@ while True:
             break
     for i in range(max(0,mid-4),min(len(datanew),mid+5)):
         if datanew[i][1]==charname:
-            print(datanew[i][0])
+            games.append(datanew[i][0])
             c+=1
-        if c==5:
+        if c==6:
             break
-
     if c==0:
         print('Этого персонажа не существует')
+    else:
+        print(f'Персонаж {charname} встречается в играх:')
+        for i in games[:5]:
+            print(i)
+        if c==6:
+            print('и др.')
